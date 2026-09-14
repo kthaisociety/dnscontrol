@@ -1,0 +1,9 @@
+{
+  "cloudflareapi_primary": {
+    "TYPE": "CLOUDFLAREAPI",
+    "apitoken": "$CLOUDFLARE_DNSCONTROL_TOKEN"
+  },
+  "none_primary": {
+    "TYPE": "NONE"
+  }
+}
