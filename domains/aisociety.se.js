@@ -27,10 +27,6 @@ D(
   A("chat-new", "153.92.126.113", TTL(300)),
   AAAA("chat-new", "2a0e:dc0:2:91bb::1", TTL(300)),
 
-  // old-chat
-  A("chat-old", "188.66.62.216", TTL(60)),
-  AAAA("chat-old", "2a0d:5f47:fffc:10::11", TTL(60)),
-
   // chat redirect
   HOST_SYNAPSE("mattermost"),
 
