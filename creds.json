@@ -5,5 +5,8 @@
   },
   "none_primary": {
     "TYPE": "NONE"
+  },
+  "notifications": {
+    "slack_url": "$MATTERMOST_WEBHOOK_URL"
   }
 }

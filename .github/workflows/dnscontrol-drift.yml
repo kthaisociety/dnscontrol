@@ -1,0 +1,47 @@
+name: DNSControl drift check
+
+on:
+  schedule:
+    # 05:17 and 17:17 UTC
+    - cron: "17 5,17 * * *"
+  workflow_dispatch:
+
+# Shared with the push workflow so a drift check never reads Cloudflare while a
+# push is mid-apply, which would report changes that are simply not applied yet.
+concurrency:
+  group: dnscontrol-apply
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    container:
+      image: ghcr.io/dnscontrol/dnscontrol:5.0.4
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Check for out-of-band changes
+        env:
+          CLOUDFLARE_DNSCONTROL_TOKEN: ${{ secrets.CLOUDFLARE_DNSCONTROL_TOKEN }}
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+        run: |
+          set -o pipefail
+          # --expect-no-changes: exit non-zero if live DNS has drifted from git.
+          # --notify: post the diff to Mattermost. Silent when nothing drifted.
+          dnscontrol preview --notify --expect-no-changes --no-colors 2>&1 | tee drift.log
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo '### DNSControl drift check'
+            echo
+            echo '```'
+            cat drift.log 2>/dev/null || echo '(drift check produced no output)'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
