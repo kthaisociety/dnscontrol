@@ -7,6 +7,6 @@
     "TYPE": "NONE"
   },
   "notifications": {
-    "slack_url": "$MATTERMOST_WEBHOOK_URL"
+    "shoutrrr_url": "$MATTERMOST_WEBHOOK_URL"
   }
 }
