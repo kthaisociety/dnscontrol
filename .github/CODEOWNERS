@@ -1,0 +1,5 @@
+# Every change in this repo is a change to live DNS: merging to main applies it
+# with no manual approval step. The "Protect main" ruleset requires code owner
+# review, so the owners below are the only approvals that unblock a merge.
+
+*       @vilhelmprytz @sammosios
