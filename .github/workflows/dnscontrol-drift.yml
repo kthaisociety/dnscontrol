@@ -23,17 +23,19 @@ jobs:
 
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Check for out-of-band changes
         env:
           CLOUDFLARE_DNSCONTROL_TOKEN: ${{ secrets.CLOUDFLARE_DNSCONTROL_TOKEN }}
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
         run: |
-          set -o pipefail
           # --expect-no-changes: exit non-zero if live DNS has drifted from git.
           # --notify: post the diff to Mattermost. Silent when nothing drifted.
-          dnscontrol preview --notify --expect-no-changes --no-colors 2>&1 | tee drift.log
+          rc=0
+          dnscontrol preview --notify --expect-no-changes --no-colors > drift.log 2>&1 || rc=$?
+          cat drift.log
+          exit $rc
 
       - name: Job summary
         if: always()

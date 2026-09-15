@@ -20,16 +20,16 @@ jobs:
 
     steps:
       - name: Checkout pull request
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Preview
         env:
           CLOUDFLARE_DNSCONTROL_TOKEN: ${{ secrets.CLOUDFLARE_DNSCONTROL_TOKEN }}
         run: |
-          # pipefail: without it tee's exit status wins and a failed preview
-          # would report success.
-          set -o pipefail
-          dnscontrol preview --no-colors 2>&1 | tee preview.log
+          rc=0
+          dnscontrol preview --no-colors > preview.log 2>&1 || rc=$?
+          cat preview.log
+          exit $rc
 
       - name: Job summary
         if: always()
