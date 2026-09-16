@@ -39,6 +39,7 @@ D(
   HOST_SYNAPSE("console.s3.synapse"),
 
   // google verification
+  TXT("@", "v=spf1 include:_spf.google.com ~all"),
   TXT(
     "@",
     "google-site-verification=Q34Mq3qN7XxMWtQ21UAlaXkMInJCk_F0EmrTy3PZ3Eo",

@@ -11,6 +11,7 @@ D(
   GOOGLE_MX,
 
   // TXT
+  TXT("@", "v=spf1 include:_spf.google.com ~all"),
   TXT(
     "@",
     "google-site-verification=f_5cHRcS6nxiR4XBv9-RyUQlXpBBiCIq6p8F9UtCrPU",
