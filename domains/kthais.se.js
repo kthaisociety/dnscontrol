@@ -11,6 +11,9 @@ D(
   // google mail
   GOOGLE_MX,
 
+  // google spf
+  TXT("@", "v=spf1 include:_spf.google.com ~all"),
+
   // google domain verification
   TXT(
     "@",

@@ -35,6 +35,9 @@ D(
   HOST_SYNAPSE("s3.synapse"),
   HOST_SYNAPSE("console.s3.synapse"),
 
+  // google spf
+  TXT("@", "v=spf1 include:_spf.google.com ~all"),
+
   // google domain verification
   TXT(
     "@",
