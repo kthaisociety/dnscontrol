@@ -23,10 +23,6 @@ D(
   // google mail
   GOOGLE_MX,
 
-  // mailchimp DKIM
-  CNAME("k2._domainkey", "dkim2.mcsv.net."),
-  CNAME("k3._domainkey", "dkim3.mcsv.net."),
-
   // mail, Google Workspace mail UI
   CNAME("mail", "ghs.googlehosted.com."),
 
