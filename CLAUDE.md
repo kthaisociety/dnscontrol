@@ -14,7 +14,7 @@ merge and apply; the push workflow runs on every commit to `main`.
 
 ## Commands
 
-Requires the `dnscontrol` binary (currently v5.0.4 via Homebrew — keep it matched to the pinned
+Requires the `dnscontrol` binary (currently v5.1.0 via Homebrew — keep it matched to the pinned
 container image in `.github/workflows/`).
 
 ```sh
@@ -62,7 +62,7 @@ Zones default to `DefaultTTL(7200)`; per-record `TTL()` is used for names expect
 
 ## CI
 
-All three workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.0.4` container.
+All three workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.1.0` container.
 
 | Workflow | Trigger | Does |
 |---|---|---|
@@ -74,5 +74,5 @@ All three workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.0.4` cont
 a drift check never reads Cloudflare mid-apply and reports not-yet-applied changes as drift. Keep
 any new workflow that reads or writes live DNS in that same group.
 
-`--notify` posts to Mattermost via the `notifications` entry in `creds.json` (`slack_url` →
+`--notify` posts to Mattermost via the `notifications` entry in `creds.json` (`shoutrrr_url` →
 `$MATTERMOST_WEBHOOK_URL`); it is silent when there is nothing to report.

@@ -8,10 +8,13 @@ D(
   HOST_SYNAPSE("@"),
   HOST_SYNAPSE("www"),
 
+  // google mail
   GOOGLE_MX,
 
-  // TXT
+  // google spf
   TXT("@", "v=spf1 include:_spf.google.com ~all"),
+
+  // google domain verification
   TXT(
     "@",
     "google-site-verification=f_5cHRcS6nxiR4XBv9-RyUQlXpBBiCIq6p8F9UtCrPU",
