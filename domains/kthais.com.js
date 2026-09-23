@@ -36,6 +36,11 @@ D(
     "@",
     "google-site-verification=_-b1c39rAbYqUddvyTFRv4MFi0wAl_mXFcrZkQ998EE",
   ),
+  // google search console
+  TXT(
+    "@",
+    "google-site-verification=qPFq_dJHERVhDjxHM0uLx-E-UB7IzWQ_Gk88RJxeBjI",
+  ),
 
   // mail policy
   TXT("@", "v=spf1 include:_spf.google.com ~all"),
