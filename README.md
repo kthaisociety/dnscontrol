@@ -68,12 +68,13 @@ You shouldn't need to run `dnscontrol push` by hand, CI does it on merge.
 
 ### Formatting
 
-Every file is formatted with [Prettier](https://prettier.io/) using its default settings, and CI
-fails a pull request that isn't. With [Node.js](https://nodejs.org/) installed, fix it before
-pushing:
+Files Prettier understands — the `.js`, Markdown, YAML and JSON — are formatted with
+[Prettier](https://prettier.io/) using its default settings, and CI fails a pull request if one of
+them isn't. Other files, such as `LICENSE` and `.github/CODEOWNERS`, aren't checked. With
+[Node.js](https://nodejs.org/) installed, fix formatting before pushing:
 
 ```sh
-npx prettier@3.9.9 --write .   # format everything
+npx prettier@3.9.9 --write .   # format every supported file
 npx prettier@3.9.9 --check .   # what CI runs
 ```
 
