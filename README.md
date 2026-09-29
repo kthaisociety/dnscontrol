@@ -11,7 +11,7 @@ Zones: **kthais.com**, **kthais.se**, **aisociety.se**, **ktha.is**
 
 1. Edit the zone's file in `domains/` — one file per domain.
 2. Open a pull request. CI posts a **preview** of exactly which records will change; read it before
-   asking for review.
+   asking for review. CI also checks formatting — see [Formatting](#formatting).
 3. Merge. The change is applied within a minute or two.
 
 Nameserver delegation and registrar settings are _not_ managed here — only the records inside our
@@ -48,7 +48,6 @@ dnscontrol check      # validate syntax — no credentials needed
 
 To diff against live DNS you also need our Cloudflare token.
 
-
 If you have 1Password [1Password CLI](https://developer.1password.com/docs/cli/) you can use [direnv](https://direnv.net/) with a `.envrc` file:
 
 ```.envrc
@@ -67,13 +66,26 @@ dnscontrol preview --domains kthais.com   # ...for one zone only
 
 You shouldn't need to run `dnscontrol push` by hand, CI does it on merge.
 
+### Formatting
+
+Files Prettier understands — the `.js`, Markdown, YAML and JSON — are formatted with
+[Prettier](https://prettier.io/) using its default settings, and CI fails a pull request if one of
+them isn't. Other files, such as `LICENSE` and `.github/CODEOWNERS`, aren't checked. With
+[Node.js](https://nodejs.org/) installed, fix formatting before pushing:
+
+```sh
+npx prettier@3.9.9 --write .   # format every supported file
+npx prettier@3.9.9 --check .   # what CI runs
+```
+
 ## Automation
 
 | Workflow | When               | What                                                                    |
 | -------- | ------------------ | ----------------------------------------------------------------------- |
-| preview  | on every PR        | comments the diff, so changes get reviewed before merge                 |
+| preview  | on every PR        | shows the diff in the job summary, so changes get reviewed before merge |
 | push     | on merge to `main` | applies the change and notifies Mattermost                              |
 | drift    | twice a day        | fails if someone edited DNS in the Cloudflare dashboard instead of here |
+| prettier | on every PR        | fails if a file isn't formatted — run `npx prettier@3.9.9 --write .`    |
 
 If the drift check fires, someone made a change outside this repo. Fix it by making the same change
 here, or re-run `push` to overwrite it.

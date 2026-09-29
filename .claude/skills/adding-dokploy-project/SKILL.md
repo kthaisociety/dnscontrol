@@ -26,10 +26,10 @@ and 5 — don't re-ask those.
 5. **Where it lives** — repo URL, for the comment
 6. **API host?** — if yes, `api.<project>` (plus `api.<project>-staging` when staging was requested)
 
-| Zone | For |
-|---|---|
-| `kthais.com` | Projects for the KTH chapter — member tools, course things. The usual answer. |
-| `aisociety.se` | Broader AI Society projects, not specific to KTH. |
+| Zone           | For                                                                           |
+| -------------- | ----------------------------------------------------------------------------- |
+| `kthais.com`   | Projects for the KTH chapter — member tools, course things. The usual answer. |
+| `aisociety.se` | Broader AI Society projects, not specific to KTH.                             |
 
 Projects don't go on `kthais.se` (redirects only) or `ktha.is` (short links — its lone `app` record
 is a legacy exception, not a precedent).
@@ -69,10 +69,10 @@ fine, but a non-LE certificate fails to issue with an error that doesn't look li
 
 ## Common mistakes
 
-| Mistake | Fix |
-|---|---|
-| Raw `A`/`AAAA` with the Synapse IP | `HOST_SYNAPSE()` keeps the IP in one place |
-| Staging named `-dev` | Use `-staging`. `pyrmit-dev` and `kthcoursecommunity-dev` predate this |
-| Copying `lumina`'s ordering | That block is `-staging` first and predates this skill. Name first |
-| Dropping the repo URL to match surrounding style | Existing blocks predate the convention. Write both lines |
-| Zone picked as "wherever the other projects are" | Use the table. KTH-specific vs. general is the rule |
+| Mistake                                          | Fix                                                                    |
+| ------------------------------------------------ | ---------------------------------------------------------------------- |
+| Raw `A`/`AAAA` with the Synapse IP               | `HOST_SYNAPSE()` keeps the IP in one place                             |
+| Staging named `-dev`                             | Use `-staging`. `pyrmit-dev` and `kthcoursecommunity-dev` predate this |
+| Copying `lumina`'s ordering                      | That block is `-staging` first and predates this skill. Name first     |
+| Dropping the repo URL to match surrounding style | Existing blocks predate the convention. Write both lines               |
+| Zone picked as "wherever the other projects are" | Use the table. KTH-specific vs. general is the rule                    |
