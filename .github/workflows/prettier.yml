@@ -1,0 +1,22 @@
+name: Prettier
+
+on:
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v7
+
+      - name: Check formatting
+        run: npx --yes prettier@3.9.9 --check .

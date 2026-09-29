@@ -23,11 +23,19 @@ dnscontrol preview                      # diff config against live Cloudflare
 dnscontrol preview --domains kthais.com # ...restricted to one zone
 dnscontrol preview --expect-no-changes  # what the drift workflow runs; non-zero exit on drift
 dnscontrol push                         # apply. Normally CI-only — see above
+
+npx prettier@3.9.9 --check .            # what the prettier workflow runs; needs Node
+npx prettier@3.9.9 --write .            # fix formatting in place
 ```
+
+Prettier runs with its defaults (there is no config or ignore file) over every file type it
+supports — Markdown and YAML as well as the DNSControl `.js`. Keep the version matched to
+`.github/workflows/prettier.yml`. It pads Markdown tables to aligned columns, so after editing a
+table in this file or `README.md`, run `--write` rather than aligning by hand.
 
 Anything beyond `check` needs `CLOUDFLARE_DNSCONTROL_TOKEN`. `.envrc` (gitignored, direnv)
 fetches it from 1Password: `op item get "Cloudflare DNSControl API Token" --account
-kthaisociety.1password.eu`, so you must be signed in to `op` first. `creds.json` *is* committed
+kthaisociety.1password.eu`, so you must be signed in to `op` first. `creds.json` _is_ committed
 but holds only `$VAR` indirections, never secret material — keep it that way.
 
 ## Architecture
@@ -40,7 +48,7 @@ but holds only `$VAR` indirections, never secret material — keep it that way.
 4. Walks `getConfiguredDomains()` and `D_EXTEND`s every zone with `DNSCONTROL_MANAGED`.
 
 Step 4 means the `dnscontrol-managed` TXT marker is applied automatically to every zone — never
-add it to an individual domain file. Anything else that must hold for *all* zones belongs in that
+add it to an individual domain file. Anything else that must hold for _all_ zones belongs in that
 loop rather than repeated per file.
 
 Registrar is `REG_NONE` for every zone: nameserver delegation and registrar state are **not**
@@ -62,13 +70,15 @@ Zones default to `DefaultTTL(7200)`; per-record `TTL()` is used for names expect
 
 ## CI
 
-All three workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.2.0` container.
+The three `dnscontrol-*` workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.2.0`
+container; `prettier` runs `npx prettier@3.9.9` directly on the runner.
 
-| Workflow | Trigger | Does |
-|---|---|---|
-| `dnscontrol-preview` | PR to `main` | `preview`, diff into the job summary. Skipped for fork PRs (no secret access). |
-| `dnscontrol-push` | push to `main`, manual | `push --notify` |
-| `dnscontrol-drift` | cron 05:17 & 17:17 UTC, manual | `preview --notify --expect-no-changes` — fails on out-of-band Cloudflare edits |
+| Workflow             | Trigger                        | Does                                                                                             |
+| -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `dnscontrol-preview` | PR to `main`                   | `preview`, diff into the job summary. Skipped for fork PRs (no secret access).                   |
+| `dnscontrol-push`    | push to `main`, manual         | `push --notify`                                                                                  |
+| `dnscontrol-drift`   | cron 05:17 & 17:17 UTC, manual | `preview --notify --expect-no-changes` — fails on out-of-band Cloudflare edits                   |
+| `prettier`           | PR to `main`                   | `prettier --check .` — fails on unformatted files. Needs no secrets, so it runs on fork PRs too. |
 
 `push` and `drift` share the `dnscontrol-apply` concurrency group (`cancel-in-progress: false`) so
 a drift check never reads Cloudflare mid-apply and reports not-yet-applied changes as drift. Keep
