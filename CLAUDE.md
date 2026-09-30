@@ -14,7 +14,7 @@ merge and apply; the push workflow runs on every commit to `main`.
 
 ## Commands
 
-Requires the `dnscontrol` binary (currently v5.2.0 via Homebrew — keep it matched to the pinned
+Requires the `dnscontrol` binary (currently v5.3.0 via Homebrew — keep it matched to the pinned
 container image in `.github/workflows/`).
 
 ```sh
@@ -70,7 +70,7 @@ Zones default to `DefaultTTL(7200)`; per-record `TTL()` is used for names expect
 
 ## CI
 
-The three `dnscontrol-*` workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.2.0`
+The three `dnscontrol-*` workflows run in the pinned `ghcr.io/dnscontrol/dnscontrol:5.3.0`
 container; `prettier` runs `npx prettier@3.9.9` directly on the runner.
 
 | Workflow             | Trigger                        | Does                                                                                             |
