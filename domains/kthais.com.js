@@ -101,6 +101,10 @@ D(
   HOST_SYNAPSE("kthcoursecommunity-dev"),
   HOST_SYNAPSE("api.kthcoursecommunity-dev"),
 
+  // bao, OpenBao secrets manager API (no UI)
+  // https://github.com/kthaisociety/infrastructure
+  HOST_SYNAPSE("bao"),
+
   LE_CAA,
   END,
 );
