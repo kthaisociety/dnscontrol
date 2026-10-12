@@ -1,3 +1,5 @@
 # Code owners must approve every PR (ruleset: require code owner review).
-# The last matching pattern wins.
-* @kthaisociety/platform-engineers
+# A bad DNS change can take down the whole domain, so the Head of IT (or
+# Vilhelm) approves every change. Platform Engineers have write and propose
+# changes through PRs.
+* @vilhelmprytz @sammosios
