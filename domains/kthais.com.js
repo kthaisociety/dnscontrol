@@ -101,6 +101,11 @@ D(
   HOST_SYNAPSE("kthcoursecommunity-dev"),
   HOST_SYNAPSE("api.kthcoursecommunity-dev"),
 
+  // lucid, the business team's CRM (one image: API under /api, frontend elsewhere)
+  // https://github.com/kthaisociety/lucid
+  HOST_SYNAPSE("lucid"),
+  HOST_SYNAPSE("lucid-staging"),
+
   // bao, OpenBao secrets manager API (no UI)
   // https://github.com/kthaisociety/infrastructure
   HOST_SYNAPSE("bao"),
