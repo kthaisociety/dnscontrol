@@ -89,6 +89,12 @@ D(
   HOST_SYNAPSE("pyrmit-dev"),
   HOST_SYNAPSE("api.pyrmit-dev"),
 
+  // pyrmit on the delivery pipeline, temporary hosts until the switchover from the two above
+  // (frontend on /, backend on /api, one host per environment)
+  // https://github.com/kthaisociety/pyrmit
+  HOST_SYNAPSE("migration.pyrmit"),
+  HOST_SYNAPSE("migration.pyrmit-staging"),
+
   // gnosis
   // https://github.com/kthaisociety/gnosis
   HOST_SYNAPSE("gnosis"),
