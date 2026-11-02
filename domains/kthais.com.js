@@ -106,10 +106,11 @@ D(
   HOST_SYNAPSE("lucid"),
   HOST_SYNAPSE("lucid-staging"),
 
-  // kthais-staging, the main site's staging (one host: API under /api/v1, frontend elsewhere)
+  // staging, the main site's staging (one host: API under /api/v1, frontend elsewhere)
+  // NOTE: the main site's own name, so no <project>-staging prefix.
   // https://github.com/kthaisociety/kthais-frontend
   // https://github.com/kthaisociety/kthais-backend
-  HOST_SYNAPSE("kthais-staging"),
+  HOST_SYNAPSE("staging"),
 
   // bao, OpenBao secrets manager API (no UI)
   // https://github.com/kthaisociety/infrastructure
