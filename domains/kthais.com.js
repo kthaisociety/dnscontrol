@@ -9,7 +9,7 @@ D(
   HOST_SYNAPSE("www"),
 
   // api, backend for the main site
-  // https://github.com/kthaisociety/landingpage-backend
+  // https://github.com/kthaisociety/kthais-backend
   HOST_SYNAPSE("api"),
 
   // ai-study-guide, LLM-assisted study guide for KTH students
@@ -111,6 +111,12 @@ D(
   // https://github.com/kthaisociety/lucid
   HOST_SYNAPSE("lucid"),
   HOST_SYNAPSE("lucid-staging"),
+
+  // staging, the main site's staging (one host: API under /api/v1, frontend elsewhere)
+  // NOTE: the main site's own name, so no <project>-staging prefix.
+  // https://github.com/kthaisociety/kthais-frontend
+  // https://github.com/kthaisociety/kthais-backend
+  HOST_SYNAPSE("staging"),
 
   // bao, OpenBao secrets manager API (no UI)
   // https://github.com/kthaisociety/infrastructure
