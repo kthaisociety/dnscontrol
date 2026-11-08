@@ -118,11 +118,6 @@ D(
   // https://github.com/kthaisociety/kthais-backend
   HOST_SYNAPSE("staging"),
 
-  // next, the main site's temporary production host until the switchover (IT-28)
-  // https://github.com/kthaisociety/kthais-frontend
-  // https://github.com/kthaisociety/kthais-backend
-  HOST_SYNAPSE("next"),
-
   // bao, OpenBao secrets manager API (no UI)
   // https://github.com/kthaisociety/infrastructure
   HOST_SYNAPSE("bao"),
