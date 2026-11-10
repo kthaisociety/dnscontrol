@@ -123,6 +123,12 @@ D(
   // https://github.com/kthaisociety/kthais-backend
   HOST_SYNAPSE("next"),
 
+  // identity, sign-in for every KTHAIS app (OIDC). The production host has no
+  // app behind it until identity's first production release (IT-92).
+  // https://github.com/kthaisociety/identity-service
+  HOST_SYNAPSE("identity"),
+  HOST_SYNAPSE("identity-staging"),
+
   // bao, OpenBao secrets manager API (no UI)
   // https://github.com/kthaisociety/infrastructure
   HOST_SYNAPSE("bao"),
