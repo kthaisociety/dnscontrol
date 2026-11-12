@@ -19,7 +19,7 @@ jobs:
       contents: read
 
     container:
-      image: ghcr.io/dnscontrol/dnscontrol:5.5.0
+      image: ghcr.io/dnscontrol/dnscontrol:5.8.1
 
     steps:
       - name: Checkout main
