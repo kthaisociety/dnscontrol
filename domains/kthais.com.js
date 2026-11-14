@@ -133,6 +133,10 @@ D(
   // https://github.com/kthaisociety/infrastructure
   HOST_SYNAPSE("bao"),
 
+  // mlflow, experiment tracking for the research team (IT-36)
+  // https://github.com/kthaisociety/infrastructure
+  HOST_SYNAPSE("mlflow"),
+
   LE_CAA,
   END,
 );
