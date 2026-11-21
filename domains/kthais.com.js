@@ -100,9 +100,14 @@ D(
   HOST_SYNAPSE("gnosis"),
   HOST_SYNAPSE("api.gnosis"),
 
-  // kthcoursecommunity staging (no production name on this zone yet)
-  // NOTE: named -dev, predating the -staging convention. Left as-is because
-  // renaming would break the live hostname. Use -staging for new projects.
+  // kthcoursecommunity, course search and reviews for KTH students, on the delivery pipeline
+  // https://github.com/kthaisociety/KTH-Course-Community
+  HOST_SYNAPSE("kthcoursecommunity"),
+  HOST_SYNAPSE("kthcoursecommunity-staging"),
+
+  // kthcoursecommunity's hand-made app, until the switchover to the two above
+  // NOTE: named -dev, predating the -staging convention. Both go about a week
+  // after the switchover (Linear IT-53).
   // https://github.com/kthaisociety/KTH-Course-Community
   HOST_SYNAPSE("kthcoursecommunity-dev"),
   HOST_SYNAPSE("api.kthcoursecommunity-dev"),
